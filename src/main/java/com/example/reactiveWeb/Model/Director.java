@@ -16,6 +16,6 @@ public class Director {
     @Id
     private int director_id;
     private String name;
-    private int numberOfMovies;
-    private double imdbRating;
+    private int number_of_movies;
+    private double imdb_rating;
 }

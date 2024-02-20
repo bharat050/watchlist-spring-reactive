@@ -21,11 +21,18 @@ public class GlobalService {
     @Autowired
     MovieDirectorPair movieDirectorPair;
     public Mono<Movie> addMovie(Movie movie) {
-        return movieRepository.save(movie);
+        return movieRepository.save(Movie.builder()
+                .name(movie.getName())
+                .duration_in_minutes(movie.getDuration_in_minutes())
+                .imdb_rating(movie.getImdb_rating())
+                .build());
     }
 
     public Mono<Director> addDirector(Director director) {
-        return directorRepository.save(director);
+        return directorRepository.save(Director.builder()
+                .name(director.getName())
+                .number_of_movies(director.getNumber_of_movies())
+                .imdb_rating(director.getImdb_rating()).build());
     }
 
     public Mono<Pair> addMovieDirectorPair(Integer movieId, Integer directorId) {
@@ -45,7 +52,7 @@ public class GlobalService {
         Mono<Integer> id = directorRepository.findByName(director)
                 .map(Director::getDirector_id);
 
-//        Flux<Integer> movieList = movieDirectorPair;
+//        Flux<Integer> movieList = movieDirectorPair.findAllByDirectorId(id)
 
 //        directorRepository.findByName(directorName)
 //                .flatMapMany(director -> pairRepository.findByDirectorId(director.getId()))

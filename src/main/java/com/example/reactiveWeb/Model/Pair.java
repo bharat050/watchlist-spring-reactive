@@ -14,6 +14,8 @@ import org.springframework.data.relational.core.mapping.Table;
 @Builder
 public class Pair {
     @Id
+    private int pair_id;
+
     private int movie_id;
     private int director_id;
 }
