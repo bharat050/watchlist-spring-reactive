@@ -22,6 +22,11 @@ public class DirectorController {
     public Mono<Director> getDirectorByName(@PathVariable("name") String name){
         return globalService.getDirectorByName(name);
     }
+    @PutMapping("update-director-rating/{id}")
+    public Mono<Director> updateDirectorRatingById(@PathVariable("id") Integer id,
+                                                   @RequestParam() Double rating){
+        return globalService.updateDirectorRatingById(id, rating);
+    }
 
     @DeleteMapping("/delete-director-by-name")
     public Mono<Director> deleteDirectorByName(@RequestParam String name){

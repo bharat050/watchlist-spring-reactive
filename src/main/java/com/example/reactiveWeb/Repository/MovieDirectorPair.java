@@ -8,5 +8,5 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface MovieDirectorPair extends ReactiveCrudRepository<Pair, Integer> {
 
-    public Flux<Pair> findAllByDirectorId(Integer director_id);
+//    public Flux<Pair> findAllByDirectorId(Integer director_id);
 }

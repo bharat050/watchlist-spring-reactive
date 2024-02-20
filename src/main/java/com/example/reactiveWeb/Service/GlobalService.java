@@ -72,4 +72,13 @@ public class GlobalService {
         directorRepository.deleteAll();
         return null;
     }
+
+    public Mono<Director> updateDirectorRatingById(Integer id, Double rating) {
+        return directorRepository.findById(id)
+                .flatMap(director -> directorRepository.save(Director.builder()
+                        .director_id(director.getDirector_id())
+                        .name(director.getName())
+                        .imdb_rating(rating)
+                        .number_of_movies(director.getNumber_of_movies()).build()));
+    }
 }
